@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import SearchBar from '../SearchBar/SearchBar';
-
-import weather from '../api/weather'
+import WeatherDetails from '../WeatherDetails/WeatherDetails';
+import weather from '../api/weather';
+import './style.css';
 
 
 class App extends Component {
@@ -14,7 +15,7 @@ class App extends Component {
 
         try {
             const resp = await weather.get(`?q=${location}`);
-            this.setState({ weatherInfo: resp.data.weather })
+            this.setState({ weatherInfo: resp.data })
         } catch (err) {
             console.log(err);
         }
@@ -22,11 +23,11 @@ class App extends Component {
 
 
     render() {
-        console.log(this.state.weatherInfo);
         return (
             <div className="ui container">
-                <h1>Simple Weather App</h1>
+                <h1 className="header">Simple Weather App</h1>
                 <SearchBar getUserLocation={this.userLocation} />
+                <WeatherDetails weatherDetails={this.state.weatherInfo}/>
             </div>
         )
     }
