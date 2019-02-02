@@ -1,0 +1,29 @@
+.weather-details-container {
+    background-color: whitesmoke;
+    margin-top: 10px;
+    height: 250px;   
+    padding: 10px;
+}
+
+h2 {
+    display: inline-block;
+    margin-top: 0;
+    margin-left: 10px;
+    font-size: 30px;
+    font-weight: 200 !important;
+}
+
+.weather-details-header {
+    border-bottom: 2px solid grey
+}
+
+.weather-details {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+}
+
+p {
+    font-size: 20px;
+}

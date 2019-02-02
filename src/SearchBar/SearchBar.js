@@ -10,9 +10,9 @@ class SearchBar extends Component {
         const { getUserLocation } = this.props;
         const { searchTerm } = this.state;
         e.preventDefault();
-        
-        getUserLocation(searchTerm)
 
+        getUserLocation(searchTerm);
+        
         this.setState({
             searchTerm: ''
         });

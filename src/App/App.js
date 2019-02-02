@@ -1,8 +1,10 @@
+import './style.css';
 import React, { Component } from 'react';
 import SearchBar from '../SearchBar/SearchBar';
 import WeatherDetails from '../WeatherDetails/WeatherDetails';
 import weather from '../api/weather';
-import './style.css';
+
+import dummyData from '../dummyData';
 
 
 class App extends Component {
@@ -10,17 +12,20 @@ class App extends Component {
         weatherInfo: [],
     }
 
-    userLocation = async (location) => {
-        console.log(location);
-
-        try {
-            const resp = await weather.get(`?q=${location}`);
-            this.setState({ weatherInfo: resp.data })
-        } catch (err) {
-            console.log(err);
-        }
+    componentDidMount() {
+        this.setState({
+            weatherInfo: dummyData,
+        });
     }
 
+    userLocation = async ( city, countryCode ) => {
+        try {
+            const resp = await weather.get(`?q=${city},${countryCode}`);
+            this.setState({ weatherInfo: resp.data })
+        } catch (err) {
+            console.log(err);  
+        }
+    }
 
     render() {
         return (
